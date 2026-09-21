@@ -1,0 +1,17 @@
+enable
+configure terminal
+hostname SW1
+vlan 10
+ name POSTES
+interface range g0/1-2
+ shutdown
+ channel-group 1 mode active
+ no shutdown
+interface port-channel 1
+ switchport mode trunk
+ switchport trunk allowed vlan 10
+interface f0/1
+ switchport mode access
+ switchport access vlan 10
+end
+write memory
